@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Crop_Img.Model.Models.Brand>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style="padding-right: 30px;">
+            <form method="post" enctype="multipart/form-data">
+                <label>Upload Images!</label>
+                <input onchange="uploadImg()" id="imgUp" type="file" name="up_files" class="form-control" />
+            </form>
+        </div>
+        <div class="col-md-8">
+            <div id="imgsUploads">
+                @*@foreach (var item in Model)
+                {
+                    <partial name="_ShowImages" model="item"/>
+                }*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            summonImgs();
+        });
+        function uploadImg() {
+            var up_prod_img = document.getElementById("imgUp");
+            var files = up_prod_img.files;
+            var data = new FormData();
+            data.append("img", files[0]);
+            $.ajax({
+                url: "/Brand/UploadImage",
+                type: "POST",
+                data: data,
+                processData: false,
+                cache: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success = true) {
+                        summonImgs();
+                        $('#imgUp').val('')
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function summonImgs(){
+            $.ajax({
+                url: "/Brand/SummonedImages",
+                type: "GET",
+                success: function (res) {
+                    $("#imgsUploads").html(res);
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+    </script>
+}
