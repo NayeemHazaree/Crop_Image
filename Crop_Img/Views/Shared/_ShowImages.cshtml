@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Crop_Img.Model.Models.Brand>
+﻿@model IEnumerable<Crop_Img.Model.Models.Image>
 
 
 @foreach(var item in Model)
 {
-   <img src="data:image/png;base64,@item.BrandImg" id="@item.Id" style="height:50px;width:50px;" />
+   <img src="data:image/png;base64,@item.ImageByte" id="@item.Id" style="height:50px;width:50px;" />
 }

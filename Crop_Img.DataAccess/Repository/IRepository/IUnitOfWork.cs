@@ -8,7 +8,7 @@ namespace Crop_Img.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
-        public IBrandRepository Brand { get; }
+        public IImageRepository Image { get; }
         Task SaveAsync();
     }
 }

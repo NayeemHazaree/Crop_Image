@@ -14,10 +14,10 @@ namespace Crop_Img.DataAccess.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
-            Brand = new BrandRepository(_db);
+            Image = new ImageRepository(_db);
         }
 
-        public IBrandRepository Brand { get; private set; }
+        public IImageRepository Image { get; private set; }
 
         public void Dispose()
         {

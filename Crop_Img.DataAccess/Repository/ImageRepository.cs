@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace Crop_Img.DataAccess.Repository
 {
-    public class BrandRepository : Repository<Brand>, IBrandRepository
+    public class ImageRepository : Repository<Image>, IImageRepository
     {
         private readonly ApplicationDbContext _db;
-        public BrandRepository(ApplicationDbContext db) :base(db)
+        public ImageRepository(ApplicationDbContext db) :base(db)
         {
             _db = db;
         }
 
-        public async Task Update(Brand brand)
+        public async Task Update(Image image)
         {
-            var brandItem = await _db.Brand.FirstOrDefaultAsync(x => x.Id == brand.Id);
-            if (brandItem != null)
+            var imgObj = await _db.Image.FirstOrDefaultAsync(x => x.Id == image.Id);
+            if (imgObj != null)
             {
-                brandItem.BrandImg = brand.BrandImg;
+                imgObj.ImageByte = image.ImageByte;
             }
         }
     }

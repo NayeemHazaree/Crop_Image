@@ -14,6 +14,6 @@ namespace Crop_Img.DataAccess.Data
         {
 
         }
-        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Image> Image { get; set; }
     }
 }

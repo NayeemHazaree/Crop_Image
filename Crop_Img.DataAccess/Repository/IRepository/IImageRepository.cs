@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Crop_Img.DataAccess.Repository.IRepository
 {
-    public interface IBrandRepository : IRepository<Brand>
+    public interface IImageRepository : IRepository<Image>
     {
-        Task Update(Brand brand);
+        Task Update(Image brand);
     }
 }
