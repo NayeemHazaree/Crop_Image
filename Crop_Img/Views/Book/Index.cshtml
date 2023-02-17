@@ -1,0 +1,85 @@
+﻿@model Crop_Img.Model.Models.Book
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="container">
+    <form method="post" asp-action="SaveBook" id="bookStoreForm">
+        <div class="row">
+            <div class="col-md-6">
+                <input id="BookName" asp-for="BookName" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input id="LessonName" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input id="LessonNo" class="form-control" />
+            </div>
+        </div>
+        <div>
+            <button onclick="AddBookToTable()" type="button" class="btn btn-primary">Add</button>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Lesson Name</th>
+                        <th>Lesson Number</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    
+                </tbody>
+            </table>
+        </div>
+        <input type="submit" class="btn btn-success"  value="Save" />
+    </form>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var index = 0;
+        function AddBookToTable(){
+            var bookName = $("#BookName").val();
+            var lessonName = $("#LessonName").val();
+            var lessonNo = $("#LessonNo").val();
+            var addToTbl = "<tr><td><input type='text' readonly value='" + bookName + "' class='form-control'/></td>" +
+                    "<td><input name='LessonList[" + index + "].LessonName' type='text' readonly value = '" + lessonName + "' class='form-control' /> </td>" +
+                    "<td><input name='LessonList[" + index + "].LessonNo' type='text' readonly value = '" + lessonNo + "' class='form-control'/> </td>" +
+                "</tr>";
+            $("#tableBody").append(addToTbl);
+            index++;
+        }
+
+        //function SaveBookInfo(){
+        //    $.ajax({
+        //        url: '@Url.Action("SaveBook", "Book")',
+        //        dataType: "json",
+        //        type: "POST",
+        //        data: $('#bookStoreForm').serialize(),
+        //        success: function (result) {
+        //            console.log(result);
+        //        },
+        //        error: function (ex) {
+        //            //
+        //            console.log(ex);
+        //        }
+        //    })
+        //}
+    </script>
+}

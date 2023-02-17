@@ -9,6 +9,8 @@ namespace Crop_Img.DataAccess.Repository.IRepository
     public interface IUnitOfWork : IDisposable
     {
         public IImageRepository Image { get; }
+        public IBookRepository Book { get; }
+        public ILessonRepository Lesson { get; }
         Task SaveAsync();
     }
 }

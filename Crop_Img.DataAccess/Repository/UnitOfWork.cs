@@ -15,9 +15,13 @@ namespace Crop_Img.DataAccess.Repository
         {
             _db = db;
             Image = new ImageRepository(_db);
+            Book = new BookRepository(_db);
+            Lesson = new LessonRepository(_db);
         }
 
         public IImageRepository Image { get; private set; }
+        public IBookRepository Book { get; private set; }
+        public ILessonRepository Lesson { get; private set; }
 
         public void Dispose()
         {

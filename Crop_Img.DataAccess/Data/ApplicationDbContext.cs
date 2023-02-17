@@ -15,5 +15,7 @@ namespace Crop_Img.DataAccess.Data
 
         }
         public DbSet<Image> Image { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Lessons> Lessons { get; set; }
     }
 }
